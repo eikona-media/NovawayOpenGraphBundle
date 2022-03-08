@@ -5,8 +5,10 @@ namespace Novaway\Bundle\OpenGraphBundle\Twig;
 use Novaway\Component\OpenGraph\OpenGraphInterface;
 use Novaway\Component\OpenGraph\OpenGraphTagInterface;
 use Novaway\Component\OpenGraph\View\OpenGraphRendererInterface;
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFunction;
 
-class OpenGraphExtension extends \Twig_Extension
+class OpenGraphExtension extends AbstractExtension
 {
     /** @var OpenGraphRendererInterface */
     private $renderer;
@@ -28,9 +30,9 @@ class OpenGraphExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('renderNamespace', [$this, 'renderNamespaceFunction'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('renderGraph', [$this, 'renderGraphFunction'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('renderTag', [$this, 'renderTagFunction'], ['is_safe' => ['html']]),
+            new TwigFunction('renderNamespace', [$this, 'renderNamespaceFunction'], ['is_safe' => ['html']]),
+            new TwigFunction('renderGraph', [$this, 'renderGraphFunction'], ['is_safe' => ['html']]),
+            new TwigFunction('renderTag', [$this, 'renderTagFunction'], ['is_safe' => ['html']]),
         ];
     }
 
