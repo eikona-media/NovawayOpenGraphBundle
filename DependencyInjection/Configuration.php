@@ -12,8 +12,13 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('novaway_open_graph');
+        $treeBuilder = new TreeBuilder('novaway_open_graph');
+
+        if (method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            $rootNode = $treeBuilder->root('novaway_open_graph');
+        }
 
         $rootNode
             ->children()
